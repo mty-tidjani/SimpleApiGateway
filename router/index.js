@@ -1,8 +1,22 @@
-const userRoutes = require("./user.routes");
+import userRoutes from "./user.routes";
+import todoRoutes from "./todos.routes";
 
-userRoutes
-const router = {
-  routes: userRoutes
+const transform = (...args) => {
+  const tab = [];
+
+  args.forEach(routers => {
+    routers.paths.forEach(path => {
+      tab.push({
+       prefix: path.url,
+       target: routers.proxyUrl,
+       middlewares: path.middlewares || []
+      });
+    });
+  })
+  return tab;
 }
 
-module.exports = router;
+const routes = transform(userRoutes, todoRoutes)
+
+
+export default routes;

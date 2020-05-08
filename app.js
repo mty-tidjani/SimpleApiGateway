@@ -1,11 +1,17 @@
-const gateway = require('fast-gateway');
+import gateway from 'fast-gateway';
 
-const routes = require("./router");
+import router from "./router";
+import middle from './middlewares/hello';
 
+console.log(router);
 
-const myGate = gateway(routes);
+const myGate = gateway({
+  routes: router,
+});
 
-server = myGate.getServer();
+//myGate.use(middle)
+
+const server = myGate.getServer();
 
 server.listen(3023, function () {
   console.log('Example app listening on port 3023.');

@@ -1,14 +1,15 @@
 import middle from "../middlewares/hello";
+import auth from "../middlewares/auth";
 
 const proxyUrl = 'http://127.0.0.1:8180'
 
 const paths = [
-  {url: '/users', middlewares: [middle]},
+  {url: 'todos/derri', middlewares: [auth]},
   {url: '/auth'}
 ];
 
-const userRoutes = {
+const todoRoutes = {
   paths,
   proxyUrl, 
 }
-export default userRoutes;
+export default todoRoutes;
