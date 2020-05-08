@@ -1,15 +1,32 @@
-import middle from "../middlewares/hello";
-import auth from "../middlewares/auth";
+const express = require('express');
+import { createProxyMiddleware } from "http-proxy-middleware";
 
-const proxyUrl = 'http://127.0.0.1:8180'
+
+const router = express.Router();
+
+import middle from "../middlewares/hello";
+
+
+const proxyUrl = 'http://127.0.0.1:8180/v5';
+
 
 const paths = [
-  {url: 'todos/derri', middlewares: [auth]},
+  {url: '/users', middlewares: [middle]},
   {url: '/auth'}
 ];
 
-const todoRoutes = {
+const options = {
+  target: 'http://localhost:8180/v4', // target host
+  changeOrigin: true, // needed for virtual hosted sites
+  router: ['/chola','/mocha']
+};
+
+router.use('/', createProxyMiddleware(options) )
+
+
+const userRoutes = {
   paths,
   proxyUrl, 
 }
-export default todoRoutes;
+
+export default router;

@@ -14,7 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "fast-gateway": "^2.3.12"
+    "fast-gateway": "^2.3.12",
+    "http-proxy-middleware": "^1.0.3"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
