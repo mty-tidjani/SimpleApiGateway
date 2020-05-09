@@ -13,7 +13,7 @@ const app = express();
 // proxy middleware options
  
 // create the proxy (without context)
-const exampleProxy = createProxyMiddleware(options);
+// const exampleProxy = createProxyMiddleware(options);
  
 // mount `exampleProxy` in web server
 
