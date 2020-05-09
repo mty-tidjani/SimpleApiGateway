@@ -4,7 +4,7 @@ import { createProxyMiddleware } from "http-proxy-middleware";
 
 const router = express.Router();
 
-import middle from "../middlewares/hello";
+import middle from "../core/middlewares/hello";
 
 
 const proxyUrl = 'http://127.0.0.1:8180/v5';

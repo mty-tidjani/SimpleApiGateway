@@ -1,7 +1,7 @@
 import gateway from 'fast-gateway';
 
 
-import middle from './middlewares/hello';
+import middle from './core/middlewares/hello';
 const express = require('express');
 import { createProxyMiddleware } from "http-proxy-middleware";
 
@@ -11,12 +11,6 @@ const app = express();
 
  
 // proxy middleware options
-const options = {
-  target: 'http://localhost:8180/v3', // target host
-  changeOrigin: true, // needed for virtual hosted sites
-  ws: true, // proxy websockets
-  router: ['test','testa','testo']
-};
  
 // create the proxy (without context)
 const exampleProxy = createProxyMiddleware(options);
