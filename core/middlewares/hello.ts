@@ -1,7 +1,7 @@
 class HelloMiddleware {
   static ware = (req: any, res: any, next: any) => {
-    console.log('Hello');
-    console.log('You can log request here!');
+    // Todo add some logic here
+    // console.log('You can log request here!');
     next();
   }
 }

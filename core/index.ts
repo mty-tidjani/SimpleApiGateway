@@ -5,7 +5,7 @@ class Gateway {
 
   app: any;
 
-  constructor(config, app) {
+  constructor(config: any, app: any) {
     this.config = config;
     this.app = app;
   }
