@@ -1,3 +1,4 @@
+import cors from 'cors';
 import AppRoutes from './router';
 
 class Gateway {
@@ -12,6 +13,8 @@ class Gateway {
 
   initialise = () => {
     const { port } = this.config;
+
+    this.app.use(cors());
 
     this.app.use('/api', new AppRoutes(this.config).initRoutes());
 
