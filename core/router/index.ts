@@ -7,11 +7,11 @@ const express = require('express');
 
 
 class AppRoutes {
-  router;
+  router: any;
 
-  config;
+  config: any;
 
-  constructor(config) {
+  constructor(config: any) {
     this.router = express.Router();
     this.config = config;
   }

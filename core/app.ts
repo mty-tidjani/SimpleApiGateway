@@ -8,6 +8,6 @@ const app = express();
 
 const config = new Config(process).getConfig();
 
-const application = new Gateway({ config, app });
+const application = new Gateway(config, app);
 
 application.initialise();

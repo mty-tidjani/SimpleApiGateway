@@ -1,18 +1,21 @@
 class Config {
-  processor: { env: any; };
+  private processor : NodeJS.Process;
+
+  env: any;
+
+  port: Number;
+
+  logDir: string;
 
   constructor(process: NodeJS.Process) {
     this.processor = process;
   }
 
   getConfig() {
-    const env = this.processor ? this.processor.env : process.env;
-
-    return {
-      port: env.APP_PORT,
-      logDir: env.LOG_DIR,
-      env,
-    };
+    this.env = this.processor ? this.processor.env : process.env;
+    this.port = this.env.APP_PORT;
+    this.logDir = this.env.LOG_DIR;
+    return this;
   }
 }
 

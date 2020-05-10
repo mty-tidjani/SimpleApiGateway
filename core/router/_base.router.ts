@@ -1,13 +1,11 @@
-import Config from '../config/config';
-
 const express = require('express');
 
 class BaseRouter {
-  config: Config;
+  config: any;
 
   router: any;
 
-  constructor(config: Config) {
+  constructor(config: any) {
     this.config = config;
     this.router = express.Router();
   }

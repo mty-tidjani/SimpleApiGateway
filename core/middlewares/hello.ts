@@ -1,7 +1,9 @@
-const middle = (req, res, next) => {
-  console.log("Hello");
-  console.log("You can log request here!");
-    
+class HelloMiddleware {
+  static ware = (req: any, res: any, next: any) => {
+    console.log('Hello');
+    console.log('You can log request here!');
+    next();
+  }
 }
 
-export default middle;
+export default HelloMiddleware.ware;

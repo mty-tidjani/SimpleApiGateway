@@ -1,9 +1,9 @@
 import AppRoutes from './router';
 
 class Gateway {
-  config;
+  config: any;
 
-  app;
+  app: any;
 
   constructor(config, app) {
     this.config = config;

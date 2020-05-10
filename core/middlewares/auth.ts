@@ -1,7 +1,11 @@
-const auth = (req, res, next) => {
-  console.log("Hello");
-  console.log("You must be auttenticated to pass");
-  next()   
+
+class AuthMiddleware {
+  static ware = (_req: any, res: any, next: () => void) => {
+    console.log('Hello');
+    console.log('You must be auttenticated to pass');
+    next();
+  }
 }
 
-export default auth;
+
+export default AuthMiddleware.ware;
