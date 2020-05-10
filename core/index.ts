@@ -1,4 +1,4 @@
-import router from '../router';
+import AppRoutes from './router';
 
 class Gateway {
   config;
@@ -11,12 +11,9 @@ class Gateway {
   }
 
   initialise = () => {
-    const port = process.env.APP_PORT;
+    const { port } = this.config;
 
-    // app.use('/dddddddd', exampleProxy);
-    console.log(process.env.PROXY_AUTH);
-
-    this.app.use('/api', router);
+    this.app.use('/api', new AppRoutes(this.config).initRoutes());
 
     this.app.listen(port, () => {
       console.log(`The api gateway listening on port ${port}.`);

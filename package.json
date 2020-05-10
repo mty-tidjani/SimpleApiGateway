@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js --ignore public/ --exec babel-node --presets env,stage-0",
+    "dev": "ts-node-dev --respawn --transpileOnly ./core/app.ts",
     "clean": "rm -rf build && rm -rf client && mkdir build",
     "build": "npm run clean && babel . -s -d  build --presets env,stage-0 --ignore logs,node_modules",
     "prod": "node ./build/app.js"
@@ -31,6 +32,7 @@
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "nodemon": "^2.0.3",
+    "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.8.3"
   },
   "babel": {

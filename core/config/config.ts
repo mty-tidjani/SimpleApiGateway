@@ -1,7 +1,7 @@
 class Config {
-  processor;
+  processor: { env: any; };
 
-  constructor(process) {
+  constructor(process: NodeJS.Process) {
     this.processor = process;
   }
 
@@ -11,6 +11,7 @@ class Config {
     return {
       port: env.APP_PORT,
       logDir: env.LOG_DIR,
+      env,
     };
   }
 }

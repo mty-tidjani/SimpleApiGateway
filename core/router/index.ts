@@ -1,10 +1,7 @@
 
-import { Router } from 'express';
-import authRoutes from './auth.routes';
-import userRoutes from './user.routes';
-import todoRoutes from './todos.routes';
-import router from './auth.routes';
 import TodosRoutes from './todos.routes';
+import AuthRoutes from './auth.routes';
+import UserRoutes from './user.routes';
 
 const express = require('express');
 
@@ -21,8 +18,8 @@ class AppRoutes {
 
   initRoutes() {
     this.router.use('/', new TodosRoutes(this.config).initRouter());
-    this.router.use('/auth', authRoutes);
-    this.router.use('/users', userRoutes);
+    this.router.use('/auth', new AuthRoutes(this.config).initRouter());
+    this.router.use('/users', new UserRoutes(this.config).initRouter());
 
     return this.router;
   }
