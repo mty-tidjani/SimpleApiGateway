@@ -1,29 +1,32 @@
-const express = require('express');
-import { createProxyMiddleware } from "http-proxy-middleware";
+import { createProxyMiddleware } from 'http-proxy-middleware';
+import auth from '../core/middlewares/hello';
+import BaseRouter from './_base.router';
 
+const express = require('express');
 
 const router = express.Router();
 
 
-const proxyUrl = 'http://127.0.0.1:8180/v5';
+const proxyUrl = process.env.PROXY_AUTH;
 
 
 const paths = [
-  {url: '/todos', middlewares: [auth]},
-  {url: '/checklist'}
+  { url: '/todos', middlewares: [auth] },
+  { url: '/checklist' },
 ];
 
 
-paths.forEach(path => {
+paths.forEach((path) => {
   const options = { target: proxyUrl, changeOrigin: true };
-  console.log(path);
-  
-  router.use(path.url, path.middlewares || ((r, re, n) => {console.log("No middleware"); n() })  , createProxyMiddleware(options) )
-})
+  console.log(process.env.PROXY_AUTH);
 
-const userRoutes = {
-  paths,
-  proxyUrl, 
+  router.use(path.url, path.middlewares || ((r, re, n) => { console.log('No middleware'); n(); }), createProxyMiddleware(options));
+});
+
+class TodosRoutes extends BaseRouter {
+  initRouter() {
+    return router;
+  }
 }
 
-export default router;
+export default TodosRoutes;
