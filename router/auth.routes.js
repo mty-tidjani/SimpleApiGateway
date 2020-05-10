@@ -7,7 +7,7 @@ const router = express.Router();
 import middle from "../core/middlewares/hello";
 
 
-const proxyUrl = process.env.PROXY_AUTH;
+const proxyUrl = 'http://127.0.0.1:8180/v5';
 const otherProxyUrl = process.env.PROXY_AUTH_OTHER;
 
 // if you 
@@ -19,7 +19,7 @@ const options = {
   router: otherAuthServices // if you wish to send other request to other microservce
 };
 
-router.use('/', createProxyMiddleware(options) )
+router.use('/', middle, createProxyMiddleware(options) )
 
 
 export default router;

@@ -4,25 +4,22 @@ import { createProxyMiddleware } from "http-proxy-middleware";
 
 const router = express.Router();
 
-import middle from "../core/middlewares/hello";
-
 
 const proxyUrl = 'http://127.0.0.1:8180/v5';
 
 
 const paths = [
-  {url: '/users', middlewares: [middle]},
-  {url: '/auth'}
+  {url: '/todos', middlewares: [auth]},
+  {url: '/checklist'}
 ];
 
-const options = {
-  target: 'http://localhost:8180/v4', // target host
-  changeOrigin: true, // needed for virtual hosted sites
-  router: ['/chola','/mocha']
-};
 
-router.use('/', createProxyMiddleware(options) )
-
+paths.forEach(path => {
+  const options = { target: proxyUrl, changeOrigin: true };
+  console.log(path);
+  
+  router.use(path.url, path.middlewares || ((r, re, n) => {console.log("No middleware"); n() })  , createProxyMiddleware(options) )
+})
 
 const userRoutes = {
   paths,
