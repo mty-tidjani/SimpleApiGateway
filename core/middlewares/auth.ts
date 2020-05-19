@@ -29,8 +29,7 @@ const AuthMiddleware = (req: any, res: any, next: any) => {
   try {
     data = decodeToken(token, config.jwtToken);
   } catch (err) {
-    err.status = 401;
-    return next();
+    return next(error);
   }
   // Comming soon;
   // console.log('You must be auttenticated to pass');
