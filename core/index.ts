@@ -1,6 +1,8 @@
 import cors from 'cors';
 import AppRoutes from './router';
 
+z;
+
 class Gateway {
   config: any;
 

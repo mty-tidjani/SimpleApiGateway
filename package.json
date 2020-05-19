@@ -4,12 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js --ignore public/ --exec babel-node --presets env,stage-0",
+    "tsc": "tsc",
+    "start": "set debug=* && ts-node-dev --respawn --transpileOnly ./core/app.ts",
     "dev": "ts-node-dev --respawn --transpileOnly ./core/app.ts",
-    "clean": "rm -rf build && rm -rf client && mkdir build",
-    "build": "npm run clean && babel . -s -d  build --presets env,stage-0 --ignore logs,node_modules",
-    "prod": "node ./build/app.js"
+    
   },
   "author": "",
   "license": "ISC",
@@ -24,17 +22,12 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.31.0",
     "@typescript-eslint/parser": "^2.31.0",
-    "babel-cli": "^6.26.0",
-    "babel-node": "0.0.1-security",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "nodemon": "^2.0.3",
     "ts-node-dev": "^1.0.0-pre.44",
+    "tsc": "^1.20150623.0",
     "typescript": "^3.8.3"
   },
   "babel": {
