@@ -1,6 +1,7 @@
 import Config from '../config/config';
 import Queries from '../util/queries';
 import { TheError } from '../util/utils';
+import { decodeToken } from '../util/jwt';
 
 const config: Config = new Config(process);
 
@@ -24,9 +25,17 @@ const AuthMiddleware = (req: any, res: any, next: any) => {
   if (parts.length !== 2) return next(error);
 
   const token = parts[1];
+  let data: Object;
+  try {
+    data = decodeToken(token, config.jwtToken);
+  } catch (err) {
+    err.status = 401;
+    return next();
+  }
   // Comming soon;
   // console.log('You must be auttenticated to pass');
-  if (authentify({})) return next();
+  const isAuthentic = authentify(data);
+  if (isAuthentic) return next();
   return next(error);
 };
 

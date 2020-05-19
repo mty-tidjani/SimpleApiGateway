@@ -9,6 +9,10 @@ class Config {
 
   authApi: string;
 
+  jwtToken: string;
+
+  jwtEpire: string;
+
   constructor(process: NodeJS.Process) {
     this.processor = process;
   }
@@ -18,6 +22,8 @@ class Config {
     this.port = this.env.APP_PORT;
     this.logDir = this.env.LOG_DIR;
     this.authApi = this.env.PROXY_AUTH;
+    this.jwtToken = this.env.JWT_SECRET;
+    this.jwtEpire = this.env.JWT_EXPIRE;
     return this;
   }
 }
