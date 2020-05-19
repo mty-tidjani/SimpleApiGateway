@@ -7,6 +7,8 @@ class Config {
 
   logDir: string;
 
+  authApi: string;
+
   constructor(process: NodeJS.Process) {
     this.processor = process;
   }
@@ -15,6 +17,7 @@ class Config {
     this.env = this.processor ? this.processor.env : process.env;
     this.port = this.env.APP_PORT;
     this.logDir = this.env.LOG_DIR;
+    this.authApi = this.env.PROXY_AUTH;
     return this;
   }
 }
