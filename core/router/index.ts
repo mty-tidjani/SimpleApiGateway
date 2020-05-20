@@ -1,11 +1,8 @@
 import express from 'express';
 
-import TodosRoutes from './todos.routes';
-import AuthRoutes from './auth.routes';
-import UserRoutes from './user.routes';
-
-
-
+import { TodosRoutes } from './todos.routes';
+import { AuthRoutes } from './auth.routes';
+import { UserRoutes } from './user.routes';
 
 export class AppRoutes {
   router: any;

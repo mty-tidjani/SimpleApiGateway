@@ -1,5 +1,5 @@
 import { Config } from '../config/config';
-import queries from '../util/queries';
+import { Queries } from '../util/queries';
 import { TheError } from '../util/utils';
 import { decodeToken } from '../util/jwt';
 
@@ -8,7 +8,7 @@ const config: Config = new Config(process);
 // this sould query the auth microservice to find
 const authentify = async (data: object) => {
   try {
-    const resp = await queries.post(`${config.authApi}/verify`, data);
+    const resp = await Queries.post(`${config.authApi}/verify`, data);
     return resp;
   } catch (error) {
     return null;
@@ -27,7 +27,7 @@ const authMiddleware = (req: any, res: any, next: any) => {
   const token = parts[1];
   let data: object;
   try {
-    data = decodeToken(token, config.jwtToken);
+    data = decodeToken(token, config.jwtSecret);
   } catch (err) {
     return next(error);
   }

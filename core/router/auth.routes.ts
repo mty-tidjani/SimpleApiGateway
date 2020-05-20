@@ -1,9 +1,9 @@
 import { createProxyMiddleware } from 'http-proxy-middleware';
 
 import middle from '../middlewares/middle';
-import baseRouter from './base.router';
+import { BaseRouter } from './base.router';
 
-class AuthRoutes extends baseRouter {
+class AuthRoutes extends BaseRouter {
   public initRouter() {
     const { env } = this.config;
 
@@ -25,4 +25,4 @@ class AuthRoutes extends baseRouter {
   }
 }
 
-export default AuthRoutes;
+export { AuthRoutes };

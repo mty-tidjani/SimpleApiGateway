@@ -1,11 +1,11 @@
 import { createProxyMiddleware } from 'http-proxy-middleware';
 
 import auth from '../middlewares/auth';
-import baseRouter from './base.router';
+import { BaseRouter } from './base.router';
 
 require('dotenv').config();
 
-export class UserRoutes extends baseRouter {
+class UserRoutes extends BaseRouter {
   initRouter() {
     const { env } = this.config;
 
@@ -22,4 +22,4 @@ export class UserRoutes extends baseRouter {
   }
 }
 
-export default UserRoutes;
+export { UserRoutes };

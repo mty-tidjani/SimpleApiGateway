@@ -4,7 +4,7 @@ import { BaseRouter } from './base.router';
 import auth from '../middlewares/auth';
 
 
-export class TodosRoutes extends BaseRouter {
+class TodosRoutes extends BaseRouter {
   initRouter() {
     const { env } = this.config;
 
@@ -28,3 +28,4 @@ export class TodosRoutes extends BaseRouter {
   }
 }
 
+export { TodosRoutes };

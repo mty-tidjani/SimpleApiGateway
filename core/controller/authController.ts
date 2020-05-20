@@ -1,9 +1,9 @@
-import Config from '../config/config';
-import queries from '../util/queries';
+import { Config } from '../config/config';
+import { Queries } from '../util/queries';
 import { TheError } from '../util/utils';
 import { makeToken } from '../util/jwt';
 
-class authController {
+class AuthController {
   config: Config;
 
   constructor(config: Config) {
@@ -12,7 +12,7 @@ class authController {
 
   public login = async (req: any, res: any, next: (arg0: Error) => void) => {
     try {
-      const resp = queries.post(`${this.config.authApi}/login`, req.body);
+      const resp = Queries.post(`${this.config.authApi}/login`, req.body);
       const token = makeToken(resp, this.config.jwtSecret, this.config.jwtEpire);
       return res.status(200).json({ token });
     } catch (err) {
@@ -22,4 +22,4 @@ class authController {
   }
 }
 
-export default authController;
+export default { AuthController };

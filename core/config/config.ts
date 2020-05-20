@@ -1,4 +1,4 @@
-export class Config {
+class Config {
   private processor : NodeJS.Process;
 
   env: any;
@@ -27,3 +27,5 @@ export class Config {
     return this;
   }
 }
+
+export  { Config };
