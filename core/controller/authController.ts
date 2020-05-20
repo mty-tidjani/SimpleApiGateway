@@ -19,6 +19,10 @@ class AuthController {
       return res.status(200).json({ token });
 
     } catch (err) {
+      if (!err.status) err.status = 500;
+
+      if (!err.message) err.message = 'Internal server Error!';
+
       const error = new TheError(err.message, err.status);
 
       return next(error);
