@@ -7,7 +7,8 @@
     "tsc": "tsc",
     "start": "set debug=* && ts-node-dev --respawn --transpileOnly ./core/app.ts",
     "dev": "ts-node-dev --respawn --transpileOnly ./core/app.ts",
-    "prod": "tsc && node ./build/app.js"
+    "prod": "tsc && node ./build/app.js",
+    "tslint": "tslint --project tsconfig.json"
   },
   "author": "",
   "license": "ISC",
@@ -24,6 +25,7 @@
     "sinon": "^9.0.2"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.6",
     "@types/jsonwebtoken": "^8.5.0",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
     "@typescript-eslint/parser": "^2.31.0",
@@ -33,6 +35,8 @@
     "nodemon": "^2.0.3",
     "ts-node-dev": "^1.0.0-pre.44",
     "tsc": "^1.20150623.0",
+    "tslint": "^6.1.2",
+    "tslint-config-airbnb": "^5.11.2",
     "typescript": "^3.8.3"
   },
   "babel": {

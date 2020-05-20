@@ -1,10 +1,10 @@
 import { createProxyMiddleware } from 'http-proxy-middleware';
 
-import middle from '../middlewares/hello';
-import BaseRouter from './_base.router';
+import middle from '../middlewares/middle';
+import baseRouter from './base.router';
 
-class AuthRoutes extends BaseRouter {
-  initRouter() {
+class AuthRoutes extends baseRouter {
+  public initRouter() {
     const { env } = this.config;
 
     const proxyUrl = env.PROXY_AUTH;

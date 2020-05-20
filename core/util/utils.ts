@@ -1,7 +1,7 @@
 export class TheError extends Error {
-  status: Number;
+  status: number;
 
-  constructor(message:string, status: Number = 500) {
+  constructor(message:string, status: number = 500) {
     super(message);
     this.status = status;
   }

@@ -1,15 +1,15 @@
-class Config {
+export class Config {
   private processor : NodeJS.Process;
 
   env: any;
 
-  port: Number;
+  port: number;
 
   logDir: string;
 
   authApi: string;
 
-  jwtToken: string;
+  jwtSecret: string;
 
   jwtEpire: string;
 
@@ -22,10 +22,8 @@ class Config {
     this.port = this.env.APP_PORT;
     this.logDir = this.env.LOG_DIR;
     this.authApi = this.env.PROXY_AUTH;
-    this.jwtToken = this.env.JWT_SECRET;
+    this.jwtSecret = this.env.JWT_SECRET;
     this.jwtEpire = this.env.JWT_EXPIRE;
     return this;
   }
 }
-
-export default Config;

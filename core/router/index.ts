@@ -1,12 +1,13 @@
+import express from 'express';
 
 import TodosRoutes from './todos.routes';
 import AuthRoutes from './auth.routes';
 import UserRoutes from './user.routes';
 
-const express = require('express');
 
 
-class AppRoutes {
+
+export class AppRoutes {
   router: any;
 
   config: any;
@@ -24,6 +25,3 @@ class AppRoutes {
     return this.router;
   }
 }
-
-
-export default AppRoutes;

@@ -1,21 +1,21 @@
-import Config from '../config/config';
-import Queries from '../util/queries';
+import { Config } from '../config/config';
+import queries from '../util/queries';
 import { TheError } from '../util/utils';
 import { decodeToken } from '../util/jwt';
 
 const config: Config = new Config(process);
 
 // this sould query the auth microservice to find
-const authentify = async (data: Object) => {
+const authentify = async (data: object) => {
   try {
-    const resp = await Queries.post(`${config.authApi}/verify`, data);
+    const resp = await queries.post(`${config.authApi}/verify`, data);
     return resp;
   } catch (error) {
     return null;
   }
 };
 
-const AuthMiddleware = (req: any, res: any, next: any) => {
+const authMiddleware = (req: any, res: any, next: any) => {
   const error = new TheError('Not authorised', 401);
 
   const authHeader = req.header('Authorization');
@@ -25,7 +25,7 @@ const AuthMiddleware = (req: any, res: any, next: any) => {
   if (parts.length !== 2) return next(error);
 
   const token = parts[1];
-  let data: Object;
+  let data: object;
   try {
     data = decodeToken(token, config.jwtToken);
   } catch (err) {
@@ -39,4 +39,4 @@ const AuthMiddleware = (req: any, res: any, next: any) => {
 };
 
 
-export default AuthMiddleware;
+export default authMiddleware;

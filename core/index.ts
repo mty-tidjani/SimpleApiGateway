@@ -1,9 +1,7 @@
 import cors from 'cors';
-import AppRoutes from './router';
+import { AppRoutes } from './router';
 
-z;
-
-class Gateway {
+export class Gateway {
   config: any;
 
   app: any;
@@ -25,5 +23,3 @@ class Gateway {
     });
   }
 }
-
-export default Gateway;

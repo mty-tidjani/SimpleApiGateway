@@ -1,10 +1,10 @@
 import { createProxyMiddleware } from 'http-proxy-middleware';
 
-import BaseRouter from './_base.router';
-import AuthMiddleware from '../middlewares/auth';
+import { BaseRouter } from './base.router';
+import auth from '../middlewares/auth';
 
 
-class TodosRoutes extends BaseRouter {
+export class TodosRoutes extends BaseRouter {
   initRouter() {
     const { env } = this.config;
 
@@ -12,7 +12,7 @@ class TodosRoutes extends BaseRouter {
 
 
     const paths = [
-      { url: '/todos', middlewares: [AuthMiddleware] },
+      { url: '/todos', middlewares: [auth] },
       { url: '/checklist' },
     ];
 
@@ -28,4 +28,3 @@ class TodosRoutes extends BaseRouter {
   }
 }
 
-export default TodosRoutes;
