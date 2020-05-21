@@ -10,7 +10,7 @@
     "prod": "tsc && node ./build/app.js",
     "tslint": "tslint --project tsconfig.json"
   },
-  "author": "",
+  "author": "MTY-Tidjani",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
@@ -37,18 +37,5 @@
     "tslint": "^6.1.2",
     "tslint-config-airbnb": "^5.11.2",
     "typescript": "^3.8.3"
-  },
-  "babel": {
-    "presets": [
-      "env"
-    ],
-    "plugins": [
-      [
-        "transform-runtime",
-        {
-          "regenerator": true
-        }
-      ]
-    ]
   }
 }

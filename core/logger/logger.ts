@@ -7,8 +7,8 @@ require('winston-daily-rotate-file');
 const { combine, timestamp, printf } = format;
 
 const myFormat = printf((info: any) => `${info.timestamp}  ${info.level}: ${info.message} ${info.stack ? `Stack: ${info.stack}` : ''}`);
-const LOG_PATH = process.env.LOG_PATH || '';
-const dir = path.join(__dirname, LOG_PATH);
+const LOG_DIR = process.env.LOG_DIR || '';
+const dir = path.join(__dirname, LOG_DIR);
 
 
 const logger = createLogger({
