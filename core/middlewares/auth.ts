@@ -2,6 +2,7 @@ import { Config } from '../config/config';
 import { Queries } from '../util/queries';
 import { TheError } from '../util/utils';
 import { decodeToken } from '../util/jwt';
+import { Request, Response, NextFunction } from 'express';
 
 const config: Config = new Config(process);
 
@@ -15,7 +16,7 @@ const authentify = async (data: object) => {
   }
 };
 
-const authMiddleware = (req: any, res: any, next: any) => {
+const authMiddleware = (req: Request, res: Response<any>, next: NextFunction) => {
   const error = new TheError('Not authorised', 401);
 
   const authHeader = req.header('Authorization');

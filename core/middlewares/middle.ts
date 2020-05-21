@@ -1,5 +1,6 @@
+import { Response, Request, NextFunction } from 'express';
 
-const middle = (req: any, res: any, next: () => void) => {
+const middle = (req: Request, res: Response<any>, next: NextFunction) => {
   // Todo add some stuff here
   next();
 };

@@ -2,6 +2,7 @@ import { Config } from '../config/config';
 import { Queries } from '../util/queries';
 import { TheError } from '../util/utils';
 import { makeToken } from '../util/jwt';
+import { Request, Response, NextFunction } from 'express';
 
 class AuthController {
   private config: Config;
@@ -10,7 +11,7 @@ class AuthController {
     this.config = config;
   }
 
-  private sendQuery = async (req: any, res: any, next: (arg0: Error) => void, url: string) => {
+  private sendQuery = async (req: Request, res: Response<any>, next: NextFunction, url: string) => {
     try {
       const resp = Queries.post(url, req.body);
 
@@ -29,13 +30,13 @@ class AuthController {
     }
   }
 
-  public login = (req: any, res: any, next: (arg0: Error) => void) => {
+  public login = (req: Request, res: Response<any>, next: NextFunction) => {
 
     return this.sendQuery(req, res, next, `${this.config.authApi}/login`);
 
   }
 
-  public register = async (req: any, res: any, next: (arg0: Error) => void) => {
+  public register = async (req: Request, res: Response<any>, next: NextFunction) => {
 
     return this.sendQuery(req, res, next, `${this.config.authApi}/register`);
 
