@@ -1,9 +1,6 @@
 # SimpleApiGateway
 Api Gateway for routing request to specific microservices.
 
-# File Service API
-Api Gateway for routing request to specific microservices. 
-
 ## Stack
 
  1. NodeJs
