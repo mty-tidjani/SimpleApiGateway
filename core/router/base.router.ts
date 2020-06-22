@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
 
-class BaseRouter {
+export class BaseRouter {
   config: any;
 
   router: any;
@@ -10,5 +10,3 @@ class BaseRouter {
     this.router = express.Router();
   }
 }
-
-export default BaseRouter;

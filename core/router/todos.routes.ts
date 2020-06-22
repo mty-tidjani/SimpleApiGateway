@@ -1,6 +1,7 @@
 import { createProxyMiddleware } from 'http-proxy-middleware';
-import auth from '../middlewares/hello';
-import BaseRouter from './_base.router';
+
+import { BaseRouter } from './base.router';
+import auth from '../middlewares/auth';
 
 
 class TodosRoutes extends BaseRouter {
@@ -19,7 +20,7 @@ class TodosRoutes extends BaseRouter {
     paths.forEach((path) => {
       const options = { target: proxyUrl, changeOrigin: true };
 
-      const middlewares = path.middlewares || ((r, re, n) => { console.log('No middleware'); n(); });
+      const middlewares = path.middlewares || ((r: any, re: any, n: any) => { console.log('No middleware'); n(); });
 
       this.router.use(path.url, middlewares, createProxyMiddleware(options));
     });
@@ -27,4 +28,4 @@ class TodosRoutes extends BaseRouter {
   }
 }
 
-export default TodosRoutes;
+export { TodosRoutes };
