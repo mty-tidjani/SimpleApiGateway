@@ -2,7 +2,7 @@ import { createProxyMiddleware } from 'http-proxy-middleware';
 
 import middle from '../middlewares/middle';
 import { BaseRouter } from './base.router';
-import { AuthController } from '../controller/authController';
+import { AuthController } from "../controller/authController";
 
 class AuthRoutes extends BaseRouter {
   public initRouter() {
