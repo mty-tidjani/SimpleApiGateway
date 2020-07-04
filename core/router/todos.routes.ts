@@ -19,7 +19,7 @@ class TodosRoutes extends BaseRouter {
     paths.forEach((path) => {
       const options = { target: proxyUrl, changeOrigin: true };
 
-      const middlewares = path.middlewares || ((r, re, n) => { console.log('No middleware'); n(); });
+      const middlewares = path.middlewares || ((r: any, re: any, n: any) => { console.log('No middleware'); n(); });
 
       this.router.use(path.url, middlewares, createProxyMiddleware(options));
     });
