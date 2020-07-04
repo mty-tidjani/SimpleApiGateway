@@ -1,6 +1,6 @@
 import express from 'express';
-import Gateway from '.';
-import Config from './config/config';
+import { Gateway } from '.';
+import { Config } from './config/config';
 
 require('dotenv').config();
 

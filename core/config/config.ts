@@ -3,9 +3,15 @@ class Config {
 
   env: any;
 
-  port: Number;
+  port: number;
 
   logDir: string;
+
+  authApi: string;
+
+  jwtSecret: string;
+
+  jwtEpire: string;
 
   constructor(process: NodeJS.Process) {
     this.processor = process;
@@ -15,8 +21,11 @@ class Config {
     this.env = this.processor ? this.processor.env : process.env;
     this.port = this.env.APP_PORT;
     this.logDir = this.env.LOG_DIR;
+    this.authApi = this.env.PROXY_AUTH;
+    this.jwtSecret = this.env.JWT_SECRET;
+    this.jwtEpire = this.env.JWT_EXPIRE;
     return this;
   }
 }
 
-export default Config;
+export  { Config };

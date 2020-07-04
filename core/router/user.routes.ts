@@ -1,7 +1,7 @@
 import { createProxyMiddleware } from 'http-proxy-middleware';
 
 import auth from '../middlewares/auth';
-import BaseRouter from './_base.router';
+import { BaseRouter } from './base.router';
 
 require('dotenv').config();
 
@@ -22,4 +22,4 @@ class UserRoutes extends BaseRouter {
   }
 }
 
-export default UserRoutes;
+export { UserRoutes };

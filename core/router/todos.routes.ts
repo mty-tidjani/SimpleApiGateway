@@ -1,14 +1,13 @@
 import { createProxyMiddleware } from 'http-proxy-middleware';
-import auth from '../middlewares/hello';
-import BaseRouter from './_base.router';
 
+import { BaseRouter } from './base.router';
+import auth from '../middlewares/auth';
 
 class TodosRoutes extends BaseRouter {
   initRouter() {
     const { env } = this.config;
 
     const proxyUrl = env.PROXY_TODO;
-
 
     const paths = [
       { url: '/todos', middlewares: [auth] },
@@ -27,4 +26,4 @@ class TodosRoutes extends BaseRouter {
   }
 }
 
-export default TodosRoutes;
+export { TodosRoutes };
